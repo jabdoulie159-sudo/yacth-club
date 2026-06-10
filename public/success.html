@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payment Successful — Yacht Club</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --black:#0a0a0a;--panel:#161616;--border:#2a2a2a;
+      --white:#f5f5f5;--dim:#888;--accent:#c8a96e;--green:#3ddc84;
+    }
+    body{
+      background:var(--black);color:var(--white);
+      font-family:'Inter',sans-serif;
+      min-height:100vh;display:flex;align-items:center;justify-content:center;
+      padding:24px;
+    }
+    .card{
+      background:var(--panel);border:1px solid var(--border);
+      max-width:480px;width:100%;padding:56px 48px;text-align:center;
+    }
+    .icon{font-size:64px;margin-bottom:24px;display:block}
+    .tag{
+      font-family:'Space Mono',monospace;font-size:11px;
+      color:var(--green);letter-spacing:0.2em;text-transform:uppercase;
+      margin-bottom:16px;
+    }
+    h1{
+      font-family:'Bebas Neue',sans-serif;font-size:52px;
+      letter-spacing:0.06em;line-height:1;margin-bottom:16px;
+    }
+    p{color:var(--dim);font-size:14px;line-height:1.7;margin-bottom:8px}
+    .total{
+      font-family:'Space Mono',monospace;font-size:22px;
+      color:var(--accent);margin:28px 0;
+    }
+    .divider{border:none;border-top:1px solid var(--border);margin:28px 0}
+    .back-btn{
+      display:inline-block;background:var(--accent);color:var(--black);
+      text-decoration:none;padding:14px 36px;
+      font-family:'Space Mono',monospace;font-size:12px;
+      font-weight:700;letter-spacing:0.12em;text-transform:uppercase;
+      transition:background 0.2s;
+    }
+    .back-btn:hover{background:var(--white)}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="icon">✅</span>
+    <div class="tag">Payment Confirmed</div>
+    <h1>Order Placed.</h1>
+    <p>Your Wave payment went through successfully.</p>
+    <p>We're getting your order ready.</p>
+    <div class="total" id="totalDisplay"></div>
+    <hr class="divider"/>
+    <p style="margin-bottom:24px">You'll receive a confirmation on Wave. If you have questions, reach us on Instagram or WhatsApp.</p>
+    <a href="/" class="back-btn">Back to Store</a>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const total  = params.get("total");
+    if (total) {
+      document.getElementById("totalDisplay").textContent = `D${parseInt(total).toLocaleString()} GMD`;
+    }
+  </script>
+</body>
+</html>
